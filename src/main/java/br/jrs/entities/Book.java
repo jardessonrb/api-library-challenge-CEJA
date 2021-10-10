@@ -1,10 +1,13 @@
 package br.jrs.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -36,6 +39,21 @@ public class Book {
 	@ManyToOne
 	private BookCategory category;
 	
+	@ManyToOne
+	private Library library;
+	
+	public Library getLibrary() {
+		return library;
+	}
+	
+	@ManyToMany(mappedBy = "listBooks")
+	@Column(name = "book_loans")
+	private List<BookLoan> bookLoans;
+
+	public void setLibrary(Library library) {
+		this.library = library;
+	}
+
 	public BookCategory getCategory() {
 		return category;
 	}
