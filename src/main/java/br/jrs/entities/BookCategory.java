@@ -26,6 +26,7 @@ public class BookCategory {
 	@OneToMany
 	private List<Book> books;
 	
+	
 	public List<Book> getBooks() {
 		return books;
 	}
