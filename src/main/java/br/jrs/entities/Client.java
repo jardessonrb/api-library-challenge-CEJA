@@ -19,9 +19,9 @@ import br.jrs.enums.EnumSituationClient;
 public class Client {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "code")
-	private String code;
+	private long code;
 	
 	@Column(name = "name")
 	private String name;
@@ -34,15 +34,15 @@ public class Client {
 	private EnumSituationClient situationClient;
 	
 	@OneToMany
-	private List<BookLoan> listBookLoans;
+	private List<BookLoan> bookLoans;
 	
 	public Client() {}
 	
-	public String getCode() {
+	public long getCode() {
 		return code;
 	}
 	
-	public void setCode(String code) {
+	public void setCode(long code) {
 		this.code = code;
 	}
 	

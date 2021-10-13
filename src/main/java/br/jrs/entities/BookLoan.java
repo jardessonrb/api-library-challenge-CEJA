@@ -19,9 +19,9 @@ import javax.persistence.Table;
 public class BookLoan {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "code")
-	private String code;
+	private long code;
 	
 	@Column(name = "loan_date")
 	private Date loanDate;
@@ -31,10 +31,53 @@ public class BookLoan {
 	
 	@ManyToMany
 	@JoinTable(name = "book_loans", 
-		joinColumns = {@JoinColumn(name = "loans_code")},
+		joinColumns = {@JoinColumn(name = "loan_code")},
 		inverseJoinColumns = {@JoinColumn(name = "book_code")})
-	private List<Book> listBooks;
+	private List<Book> books;
 	
 	@ManyToOne
+	@JoinColumn(name = "client", referencedColumnName = "code", nullable = false)
 	private Client client;
+
+	public long getCode() {
+		return code;
+	}
+
+	public void setCode(long code) {
+		this.code = code;
+	}
+
+	public Date getLoanDate() {
+		return loanDate;
+	}
+
+	public void setLoanDate(Date loanDate) {
+		this.loanDate = loanDate;
+	}
+
+	public Date getDevolutionDate() {
+		return devolutionDate;
+	}
+
+	public void setDevolutionDate(Date devolutionDate) {
+		this.devolutionDate = devolutionDate;
+	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	
+	
 }

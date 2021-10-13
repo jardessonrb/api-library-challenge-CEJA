@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import br.jrs.connectionfactory.ConnectionFactory;
 import br.jrs.entities.Book;
 import br.jrs.entities.BookCategory;
 import br.jrs.interfaces.BookRepositoryInterface;
@@ -13,11 +14,10 @@ import br.jrs.interfaces.BookRepositoryInterface;
 public class BookRepository implements BookRepositoryInterface{
 
 	public boolean register(Book book) {
-		EntityManagerFactory managerFactory = Persistence.createEntityManagerFactory("library");
-		EntityManager manager = managerFactory.createEntityManager();
-		
+		EntityManager manager = ConnectionFactory.getEntityManager();
+		System.out.println("Categoria: "+book.getCategory());
 		manager.getTransaction().begin();
-		BookCategory category = manager.find(BookCategory.class, 1L);
+		BookCategory category = manager.find(BookCategory.class, book.getCategory());
 		book.setCategory(category);
 		manager.persist(book);
 		manager.getTransaction().commit();
@@ -26,9 +26,14 @@ public class BookRepository implements BookRepositoryInterface{
 		return true;
 	}
 
-	public List<Book> find() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Book> findAll() {
+		EntityManager manager = ConnectionFactory.getEntityManager();
+		manager.getTransaction().begin();
+		List<Book> books = manager.createQuery("from Book").getResultList();
+		manager.close();		
+		
+		
+		return books;
 	}
 
 	public List<Book> findByName(String bookName) {
