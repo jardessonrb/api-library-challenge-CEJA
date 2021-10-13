@@ -1,6 +1,9 @@
 package br.jrs.controllers;
 
+import java.util.List;
+
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -25,10 +28,19 @@ public class BookCategoryController {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response registerBook(BookCategory bookCategory) {
 		
-		System.out.println("bookCategory: "+bookCategory.getDescription());
-		
 		categoryRepository.register(bookCategory);
 		
 		return Response.status(Status.CREATED).entity(bookCategory).build();
+	}
+	
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findAll() {
+		BookCategoryRepositoryInterface bookCategoryRepository = new BookCategoryRepository();
+		
+		List<BookCategory> listBookCategories = bookCategoryRepository.findAll();
+		
+		
+		return Response.status(Status.CREATED).entity(listBookCategories).build();
 	}
 }

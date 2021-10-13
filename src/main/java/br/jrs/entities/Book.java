@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -17,9 +18,9 @@ public class Book {
 	
 	//Tombo do livro
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	@Column(name = "number_register")
-	private String numberRegister;
+	private long numberRegister;
 	
 	@Column(name = "title")
 	private String title;
@@ -37,18 +38,31 @@ public class Book {
 	private int yearEdition;
 	
 	@ManyToOne
+	@JoinColumn(name = "category", referencedColumnName = "code", nullable = false)
 	private BookCategory category;
 	
-	@ManyToOne
+	@ManyToOne()
+	@JoinColumn(name = "library", referencedColumnName = "code", nullable = false)
 	private Library library;
 	
+	@ManyToMany(mappedBy = "books")
+	@Column(name = "book_loans")
+	private List<BookLoan> bookLoans;
+	
+	
+	
+	
+	public List<BookLoan> getBookLoans() {
+		return bookLoans;
+	}
+
+	public void setBookLoans(List<BookLoan> bookLoans) {
+		this.bookLoans = bookLoans;
+	}
+
 	public Library getLibrary() {
 		return library;
 	}
-	
-	@ManyToMany(mappedBy = "listBooks")
-	@Column(name = "book_loans")
-	private List<BookLoan> bookLoans;
 
 	public void setLibrary(Library library) {
 		this.library = library;
@@ -102,11 +116,11 @@ public class Book {
 		this.yearEdition = yearEdition;
 	}
 
-	public String getNumberRegister() {
+	public long getNumberRegister() {
 		return numberRegister;
 	}
 
-	public void setNumberRegister(String numberRegister) {
+	public void setNumberRegister(long numberRegister) {
 		this.numberRegister = numberRegister;
 	}
 	
