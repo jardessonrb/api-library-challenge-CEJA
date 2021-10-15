@@ -2,8 +2,10 @@ package br.jrs.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -41,16 +43,13 @@ public class Book {
 	@JoinColumn(name = "category", referencedColumnName = "code", nullable = false)
 	private BookCategory category;
 	
-	@ManyToOne()
-	@JoinColumn(name = "library", referencedColumnName = "code", nullable = false)
+	@ManyToOne(cascade = CascadeType.MERGE)
+	@JoinColumn(name = "library",  referencedColumnName = "code", nullable = false)
 	private Library library;
 	
-	@ManyToMany(mappedBy = "books")
+	@ManyToMany(mappedBy = "books", cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
 	@Column(name = "book_loans")
 	private List<BookLoan> bookLoans;
-	
-	
-	
 	
 	public List<BookLoan> getBookLoans() {
 		return bookLoans;

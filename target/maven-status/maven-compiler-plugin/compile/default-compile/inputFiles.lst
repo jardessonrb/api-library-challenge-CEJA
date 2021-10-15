@@ -1,0 +1,17 @@
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\entities\Library.java
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\repositories\BookCategoryRepository.java
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\repositories\BookRepository.java
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\Hello.java
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\connectionfactory\ConnectionFactory.java
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\controllers\BookController.java
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\entities\BookCategory.java
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\interfaces\BookCategoryRepositoryInterface.java
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\repositories\LibraryRepository.java
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\controllers\BookCategoryController.java
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\interfaces\LibraryRepositoryInterface.java
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\entities\Client.java
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\enums\EnumSituationClient.java
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\interfaces\BookRepositoryInterface.java
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\entities\BookLoan.java
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\controllers\LibraryController.java
+c:\UFPI\CEJA\Desafio-Biblioteca\src\main\java\br\jrs\entities\Book.java

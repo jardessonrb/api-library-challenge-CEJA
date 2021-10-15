@@ -11,12 +11,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import br.jrs.entities.Book;
 import br.jrs.entities.BookCategory;
 import br.jrs.interfaces.BookCategoryRepositoryInterface;
-import br.jrs.interfaces.BookRepositoryInterface;
 import br.jrs.repositories.BookCategoryRepository;
-import br.jrs.repositories.BookRepository;
 
 @Path("book-category")
 public class BookCategoryController {
