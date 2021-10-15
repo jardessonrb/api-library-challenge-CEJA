@@ -25,7 +25,7 @@ public class BookCategory {
 	@Column(name = "description")
 	private String description;
 	
-	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "category", cascade = CascadeType.MERGE, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Book> books;
 	
 	

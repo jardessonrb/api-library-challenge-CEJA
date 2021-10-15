@@ -2,6 +2,7 @@ package br.jrs.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -33,7 +34,7 @@ public class Client {
 	@Column(name = "situation_client")
 	private EnumSituationClient situationClient;
 	
-	@OneToMany
+	@OneToMany(cascade = CascadeType.MERGE)
 	private List<BookLoan> bookLoans;
 	
 	public Client() {}

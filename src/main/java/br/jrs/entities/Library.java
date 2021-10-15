@@ -39,7 +39,7 @@ public class Library {
 	@Column(name = "email", unique = true)
 	private String email;
 	
-	@OneToMany(mappedBy = "library", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "library", cascade = CascadeType.MERGE, orphanRemoval = true, fetch = FetchType.LAZY)
 	private List<Book> books;
 
 	public long getCode() {

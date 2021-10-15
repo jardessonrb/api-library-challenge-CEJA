@@ -15,10 +15,7 @@ public class BookRepository implements BookRepositoryInterface{
 
 	public boolean register(Book book) {
 		EntityManager manager = ConnectionFactory.getEntityManager();
-		System.out.println("Categoria: "+book.getCategory());
 		manager.getTransaction().begin();
-		BookCategory category = manager.find(BookCategory.class, book.getCategory());
-		book.setCategory(category);
 		manager.persist(book);
 		manager.getTransaction().commit();
 		manager.close();		
@@ -31,8 +28,7 @@ public class BookRepository implements BookRepositoryInterface{
 		manager.getTransaction().begin();
 		List<Book> books = manager.createQuery("from Book").getResultList();
 		manager.close();		
-		
-		
+	
 		return books;
 	}
 

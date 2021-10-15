@@ -3,6 +3,7 @@ package br.jrs.entities;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,13 +30,13 @@ public class BookLoan {
 	@Column(name = "devolution_date")
 	private Date devolutionDate;
 	
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.MERGE)
 	@JoinTable(name = "book_loans", 
 		joinColumns = {@JoinColumn(name = "loan_code")},
 		inverseJoinColumns = {@JoinColumn(name = "book_code")})
 	private List<Book> books;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.MERGE)
 	@JoinColumn(name = "client", referencedColumnName = "code", nullable = false)
 	private Client client;
 

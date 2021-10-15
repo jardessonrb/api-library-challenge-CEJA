@@ -1,12 +1,7 @@
 package br.jrs.repositories;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
+import java.util.List;
 import br.jrs.connectionfactory.ConnectionFactory;
 import br.jrs.entities.BookCategory;
 import br.jrs.interfaces.BookCategoryRepositoryInterface;
@@ -30,10 +25,22 @@ public class BookCategoryRepository implements BookCategoryRepositoryInterface{
 		
 		manager.getTransaction().begin();
 		List<BookCategory> bookCategories = manager.createQuery("from BookCategory").getResultList();
-		
 		manager.close();		
 		
 		return bookCategories;
+	}
+	
+	public BookCategory findById(long id){
+		EntityManager manager = ConnectionFactory.getEntityManager();
+		
+		manager.getTransaction().begin();
+		BookCategory bookCategory = manager.find(BookCategory.class, id);
+		manager.getTransaction().commit();
+		manager.close();		
+		
+		System.out.println("Categoria: "+bookCategory.getDescription());
+		
+		return bookCategory;
 	}
 
 }
